@@ -28,6 +28,10 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 # Inherit from sdm845-common
 $(call inherit-product, device/xiaomi/sdm845-common/sdm845.mk)
 
+# Device fstab
+PRODUCT_PACKAGES += \
+    fstab.qcom
+
 # Device init scripts
 PRODUCT_PACKAGES += \
     init.target.rc
@@ -55,3 +59,7 @@ PRODUCT_PACKAGES += \
     NQNfcNci \
     SecureElement \
     Tag
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/libnfc-nci.conf \
+    $(LOCAL_PATH)/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf
